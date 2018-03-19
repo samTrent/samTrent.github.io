@@ -42,7 +42,7 @@ function ajaxReqJSON()
 //jquery test
 function ajaxReqJQUERY()
 {
-  $.ajax({url: dataURL, success: function(result){
+  $.ajax({url: walmartlabsURL, success: function(result){
       $("#ajaxSection").html(result);
   }});
 }
