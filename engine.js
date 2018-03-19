@@ -50,7 +50,7 @@ function ajaxReqJQUERY()
       var len = dataWeGotViaJsonp.length;
       for(var i=0;i<len;i++){
                 twitterEntry = dataWeGotViaJsonp[i];
-                text += '<p>' + twitterEntr  '</p>'
+                text += '<p>' + twitterEntr +  '</p>';
       }
       $('#ajaxSection').html(text);
        }
