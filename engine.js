@@ -1,6 +1,6 @@
 console.log("TEST!");
 
-var dataURL = "data.txt";
+var dataURL = "https://samtrent.github.io/data.txt";
 var walmartlabsURL = "http://api.walmartlabs.com/v1/search?query=ipod&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
 
 //AJAX req
