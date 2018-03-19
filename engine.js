@@ -40,9 +40,9 @@ function ajaxReqJSON()
 }
 
 //jquery test
-$("getDataButton").click( function()
+function ajaxReqJQUERY()
 {
-    $.ajax({url: dataURL, success: function(result){
-        $("#div1").html(result);
-    }});
-});
+  $.ajax({url: dataURL, success: function(result){
+      $("#ajaxSection").html(result);
+  }});
+}
