@@ -38,3 +38,11 @@ function ajaxReqJSON()
   xhttp.open("GET", walmartlabsURL, true);
   xhttp.send(null);
 }
+
+//jquery test
+$("getDataButton").click( function()
+{
+    $.ajax({url: dataURL, success: function(result){
+        $("#div1").html(result);
+    }});
+});
