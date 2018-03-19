@@ -1,6 +1,7 @@
 console.log("TEST!");
 
 var dataURL = "http://samshomepage.dx.am/myWalmartWebpage/data.txt";
+var walmartlabsURL = "https://api.walmartlabs.com/v1/items/12417832?format=json&apiKey=uqtgph5ch964jknmyhbrxrxj";
 
 //AJAX req
 function ajaxReq()
@@ -34,6 +35,6 @@ function ajaxReqJSON()
       console.log(this.responseText);
     }
   };
-  xhttp.open("GET", 'https://api.walmartlabs.com/v1/items/12417832?format=json&apiKey=uqtgph5ch964jknmyhbrxrxj', true);
-  xhttp.send();
+  xhttp.open("GET", walmartlabsURL, true);
+  xhttp.send(null);
 }
