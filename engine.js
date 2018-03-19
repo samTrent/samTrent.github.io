@@ -51,8 +51,9 @@ function ajaxReqJQUERY()
       for(var i=0;i<len;i++){
                 twitterEntry = dataWeGotViaJsonp[i];
                 text += '<p>' + twitterEntr +  '</p>';
+                console.log(text);
       }
-      $('#ajaxSection').html(text);
+      $('ajaxSection').html(text);
        }
      });
 }
