@@ -42,7 +42,17 @@ function ajaxReqJSON()
 //jquery test
 function ajaxReqJQUERY()
 {
-  $.ajax({url: walmartlabsURL, success: function(result){
-      $("#ajaxSection").html(result);
-  }});
+  $.ajax({
+      url: walmartlabsURL,
+      dataType: 'jsonp',
+      success: function(dataWeGotViaJsonp){
+      var text = '';
+      var len = dataWeGotViaJsonp.length;
+      for(var i=0;i<len;i++){
+                twitterEntry = dataWeGotViaJsonp[i];
+                text += '<p>' + twitterEntr  '</p>'
+      }
+      $('#ajaxSection').html(text);
+       }
+     });
 }
