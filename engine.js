@@ -35,6 +35,6 @@ function ajaxReqJSON()
       console.log(this.responseText);
     }
   };
-  xhttp.open("GET", walmartlabsURL, true);
+  xhttp.open("POST", walmartlabsURL, true);
   xhttp.send(null);
 }
