@@ -1,7 +1,7 @@
 console.log("TEST!");
 
 var dataURL = "http://samshomepage.dx.am/myWalmartWebpage/data.txt";
-var walmartlabsURL = "http://api.walmartlabs.com/v1/items/12417532?format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m";
+var walmartlabsURL = "http://api.walmartlabs.com/v1/search?query=ipod&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m";
 
 //AJAX req
 function ajaxReq()
