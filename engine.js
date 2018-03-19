@@ -42,6 +42,7 @@ function ajaxReqJSON()
 //jquery test
 function ajaxReqJQUERY()
 {
+  console.log("starting ajax");
   $.ajax({
       url: walmartlabsURL,
       dataType: 'jsonp',
