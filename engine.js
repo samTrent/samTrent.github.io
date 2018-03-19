@@ -50,7 +50,7 @@ function ajaxReqJQUERY()
       var text = '';
 
       var len = dataWeGotViaJsonp.length;
-      console.log("length of json " + len);
+      console.log(len);
       for(var i=0;i<len;i++){
                 twitterEntry = dataWeGotViaJsonp[i];
                 text += '<p>' + twitterEntr +  '</p>';
