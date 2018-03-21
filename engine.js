@@ -121,6 +121,9 @@ function ajaxReqForSelectedItem(itemID)
   document.getElementById("backButton").setAttribute('type','button');
   clearTable();
 
+  //get recommened Items
+  ajaxReqRecommenedStuff(itemID);
+
   //let the user know we are processing their request
   var loadingText = $('<p>').text("Loading Item Info...").appendTo('#ajaxSection');
 
@@ -177,8 +180,6 @@ function ajaxReqForSelectedItem(itemID)
 
      });
 
-     //get recommened Items
-     ajaxReqRecommenedStuff(itemID);
 
 }
 
@@ -254,7 +255,7 @@ function ajaxReqJQUERY(URLQuery)
 
         //append to HTML table
         var $tr = $("<tr id="+JSONData.items[i].itemId+">").append(
-            $("<td id='imageCell' class='clickableLink'>").append(img).on('click', function() { ajaxReqRecommenedStuff(this.parentNode.id); }),
+            $("<td id='imageCell' class='clickableLink'>").append(img).on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
             $("<td id='nameCell' class='clickableLink'>").text(JSONData.items[i].name).on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
             $('<td class="descriptionText">').text(JSONData.items[i].shortDescription),
             $('<td>').text("$" + JSONData.items[i].salePrice)
