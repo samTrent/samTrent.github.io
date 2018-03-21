@@ -121,8 +121,7 @@ function ajaxReqForSelectedItem(itemID)
   document.getElementById("backButton").setAttribute('type','button');
   clearTable();
 
-  //get recommened Items
-  ajaxReqRecommenedStuff(itemID);
+
 
   //let the user know we are processing their request
   var loadingText = $('<p>').text("Loading Item Info...").appendTo('#ajaxSection');
@@ -180,7 +179,8 @@ function ajaxReqForSelectedItem(itemID)
 
      });
 
-
+     //get recommened Items
+     ajaxReqRecommenedStuff(itemID);
 }
 
 
