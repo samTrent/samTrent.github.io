@@ -260,8 +260,6 @@ function ajaxReqJQUERY(URLQuery)
             $('<td class="descriptionText">').text(JSONData.items[i].shortDescription),
             $('<td>').text("$" + JSONData.items[i].salePrice)
           ).appendTo('#ajaxSection');
-
-
       }
 
     },
