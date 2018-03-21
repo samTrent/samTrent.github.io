@@ -2,30 +2,34 @@
 <html>
   <head>
     <link rel="stylesheet" href="index.css">
-    <script src="engine.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <title>Walmart Homepage</title>
+    <script src="searchEngine.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
 
     <img class="logoImage" src="imgs/walmartLogo.png" alt="logo">
     <br>
-    <input class="searchField" id="searchInput" type="text" name="searchField" value="" required placeholder="Enter an item...">
-    <button class="searchButton" type="button" onclick="getSearchQuery()" name="button">Search Product</button>
+    <input id="searchInput" class="searchField" type="text" name="searchField" value="" required placeholder="Enter an item...">
+    <button class="searchButton" type="button" onclick="preformSearch()" name="button">Search Product</button>
     <br><br>
 
 
-    <input id="backButton" type="hidden" name="button" value="Back" onclick="getSearchQuery()">
+    <input id="backButton" type="hidden" name="button" value="Back" onclick="preformSearch()">
 
     <!-- start table -->
     <table id="ajaxSection">
 
+      <!-- default display -->
       <tr>
         <td>No Search Results</td>
       </tr>
+
+
       <!-- append data to table with JQUERY/AJAX -->
 
     </table>
+
   </body>
 </html>

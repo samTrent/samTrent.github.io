@@ -1,23 +1,17 @@
-'use strict';
-
-var walmartlabsURLSearchQuery = "";
-var walmartlabsURLLookUpQuery = "";
-var walmartlabsURLRecommendationQuery = "";
 
 /************************************************
 * getSearchQuery()
 *   This function preforms a search based on the
 * given query.
 *************************************************/
-function getSearchQuery()
+function preformSearch()
 {
   var query = document.getElementById('searchInput').value;
 
   //dont let an emply value pass though
   if(query)
   {
-    walmartlabsURLSearchQuery = "https://api.walmartlabs.com/v1/search?query=" + query + "&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
-    ajaxReqJQUERY(walmartlabsURLSearchQuery);
+    ajaxReqJQUERY(query);
   }
   else
   {
@@ -25,25 +19,35 @@ function getSearchQuery()
   }
 }
 
-
 /************************************************
-* lookUpQuery()
-*   This function returns a URL for a given look up
-* query.
+* getSearchQuery()
+*   This function returns a URL for an ajax request
+*   to get the first 10 product for a queried item.
 *************************************************/
-function getlookUpQuery(itemID)
+function getSearchQuery(query)
 {
-  return walmartlabsURLLookUpQuery = "https://api.walmartlabs.com/v1/items/" + itemID + "?format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
+  return "https://api.walmartlabs.com/v1/search?query=" + query + "&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
 }
 
 /************************************************
 * lookUpQuery()
-*   This function returns a URL for a given look up
-* query.
+*   This function returns a URL for an ajax request
+*   to get a given look up query for a selected item.
+*************************************************/
+function getlookUpQuery(itemID)
+{
+  return "https://api.walmartlabs.com/v1/items/" + itemID + "?format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
+}
+
+/************************************************
+* getRecommendationQuery()
+*   This function returns a URL for an ajax request
+*   to get the first 10 product recommendations for
+*   a selceted item.
 *************************************************/
 function getRecommendationQuery(itemID)
 {
-  return walmartlabsURLRecommendationQuery = "$curl https://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
+  return "https://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
 }
 
 /************************************************
@@ -118,10 +122,10 @@ function clearTable()
 *************************************************/
 function ajaxReqForSelectedItem(itemID)
 {
+  //display back button
   document.getElementById("backButton").setAttribute('type','button');
+
   clearTable();
-
-
 
   //let the user know we are processing their request
   var loadingText = $('<p>').text("Loading Item Info...").appendTo('#ajaxSection');
@@ -171,8 +175,6 @@ function ajaxReqForSelectedItem(itemID)
             .append("<br><br>(" + numOfReviews + " Reviews)")
           ).appendTo('#ajaxSection');
 
-
-
           //get recommened Items
           ajaxReqRecommenedStuff(itemID);
 
@@ -189,30 +191,40 @@ function ajaxReqForSelectedItem(itemID)
 
 }
 
-
+/************************************************
+* ajaxReqRecommenedStuff()
+*   This function preforms a Jquery ajax request
+*   and returns 10 product recommendations based
+*   on the selected itemID.
+*************************************************/
 function ajaxReqRecommenedStuff(itemID)
 {
   //let the user know we are processing their request
-  var loadingText = $('<p>').text("Searching for items...").appendTo('#ajaxSection');
-  var newURL = getRecommendationQuery(itemID);
+  var loadingText = $('<p>').text("Getting recommendations for item...").appendTo('#ajaxSection');
 
   console.log("starting ajax RecommendationQuery");
-  console.log("The itemID is: " + itemID + " the query is: " + newURL);
+  console.log("The itemID is: " + itemID + " the query is: " + getRecommendationQuery(itemID));
 
-
-    $.ajax({
-      url: newURL,
+  $.support.cors = true;
+  $.ajax({
+      type: 'GET',
+      url: getRecommendationQuery(itemID),
       dataType: 'jsonp',
-      success: function(data)
+      crossDomain: true,
+
+      success: function(JSONdata)
       {
 
-           console.log(data);
-           console.log(data.items[0]);
+           console.log(JSONdata);
+          // console.log(JSONdata.items[0]);
 
       },
-      error: function(error)
+      error: function(error, text, et)
       {
-        console.log(error);
+
+        console.log("Recommendation Query error ", error);
+        console.log(text);
+        console.log(et);
         alert("There was an error getting the recommenedations...");
       }
     });
@@ -226,10 +238,10 @@ function ajaxReqRecommenedStuff(itemID)
 /************************************************
 * ajaxReqJQUERY()
 *   This function preforms a Jquery ajax request
-*   and gets the products based on the users search
+*   and returns 10 products based on the users search
 *   query.
 *************************************************/
-function ajaxReqJQUERY(URLQuery)
+function ajaxReqJQUERY(query)
 {
   document.getElementById("backButton").setAttribute('type','hidden');
   clearTable();
@@ -243,36 +255,43 @@ function ajaxReqJQUERY(URLQuery)
   console.log("starting ajax");
 
   $.ajax({
-      url: URLQuery,
+      url: getSearchQuery(query),
       dataType: 'jsonp',
-      success: function(JSONData){
-
-      console.log(JSONData); // go though each item
-
-      //remove the loading text
-      loadingText.remove();
-
-      //generate 10 rows here
-      for(var i = 0; i < 10; i++)
+      success: function(JSONData)
       {
-        //set up our image tag
-        var img = $('<img id="dynamic" >'); //Equivalent: $(document.createElement('img'))
-        img.attr('src', JSONData.items[i].mediumImage);
 
-        //append to HTML table
-        var $tr = $("<tr id="+JSONData.items[i].itemId+">").append(
-            $("<td id='imageCell' class='clickableLink'>").append(img).on('click', function() { ajaxReqRecommenedStuff(this.parentNode.id); }),
-            $("<td id='nameCell' class='clickableLink'>").text(JSONData.items[i].name).on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
-            $('<td class="descriptionText">').text(JSONData.items[i].shortDescription),
-            $('<td>').text("$" + JSONData.items[i].salePrice)
-          ).appendTo('#ajaxSection');
+        console.log(JSONData); // go though each item
+
+        //remove the loading text
+        loadingText.remove();
+
+        //generate 10 rows here
+        for(var i = 0; i < 10; i++)
+        {
+          //set up our image tag
+          var img = $('<img id="dynamic" >'); //Equivalent: $(document.createElement('img'))
+          img.attr('src', JSONData.items[i].mediumImage);
+
+          //append to HTML table
+          var $tr = $("<tr id="+JSONData.items[i].itemId+">").append(
+
+              //make the image and name clickable.
+              $("<td id='imageCell' class='clickableLink'>")
+              .append(img)
+              .on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
+              $("<td id='nameCell' class='clickableLink'>").text(JSONData.items[i].name)
+              .on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
+
+              $('<td class="descriptionText">').text(JSONData.items[i].shortDescription),
+              $('<td>').text("$" + JSONData.items[i].salePrice)
+            ).appendTo('#ajaxSection');
+        }
+
+      },
+      error: function(error)
+      {
+        console.log(error);
+        alert("There was an error getting the search results...");
       }
-
-    },
-    error: function(error)
-    {
-      console.log(error);
-      alert("There was an error getting the search results...");
-    }
-   });
+    });
 }
