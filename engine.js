@@ -158,6 +158,7 @@ function ajaxReqForSelectedItem(itemID)
 
         singleItemTableHeader(JSONData.name);
 
+
         //append to HTML table
         var $tr = $('<tr>').append(
             $('<td style="background-color:white">')
@@ -169,6 +170,12 @@ function ajaxReqForSelectedItem(itemID)
             .append(rateingImg)
             .append("<br><br>(" + numOfReviews + " Reviews)")
           ).appendTo('#ajaxSection');
+
+
+
+          //get recommened Items
+          ajaxReqRecommenedStuff(itemID);
+
        },
        error: function(error)
        {
@@ -179,8 +186,7 @@ function ajaxReqForSelectedItem(itemID)
 
      });
 
-     //get recommened Items
-     ajaxReqRecommenedStuff(itemID);
+
 }
 
 
