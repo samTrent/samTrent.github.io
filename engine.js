@@ -200,7 +200,7 @@ function ajaxReqRecommenedStuff(itemID)
       success: function(data)
       {
 
-           console.log(data[0]);
+           console.log(data);
            console.log(data.items[0]);
 
       },
@@ -255,7 +255,7 @@ function ajaxReqJQUERY(URLQuery)
 
         //append to HTML table
         var $tr = $("<tr id="+JSONData.items[i].itemId+">").append(
-            $("<td id='imageCell' class='clickableLink'>").append(img).on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
+            $("<td id='imageCell' class='clickableLink'>").append(img).on('click', function() { ajaxReqRecommenedStuff(this.parentNode.id); }),
             $("<td id='nameCell' class='clickableLink'>").text(JSONData.items[i].name).on('click', function() { ajaxReqForSelectedItem(this.parentNode.id); }),
             $('<td class="descriptionText">').text(JSONData.items[i].shortDescription),
             $('<td>').text("$" + JSONData.items[i].salePrice)
