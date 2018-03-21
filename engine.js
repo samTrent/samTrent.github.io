@@ -122,7 +122,7 @@ function ajaxReqForSelectedItem(itemID)
   clearTable();
 
   //get recommened Items
-  ajaxReqRecommenedStuff(itemID);
+  //ajaxReqRecommenedStuff(itemID);
 
   //let the user know we are processing their request
   var loadingText = $('<p>').text("Loading Item Info...").appendTo('#ajaxSection');
