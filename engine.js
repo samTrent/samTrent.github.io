@@ -43,7 +43,7 @@ function getlookUpQuery(itemID)
 *************************************************/
 function getRecommendationQuery(itemID)
 {
-  return walmartlabsURLRecommendationQuery = "https://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
+  return walmartlabsURLRecommendationQuery = "$curl https://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
 }
 
 /************************************************
