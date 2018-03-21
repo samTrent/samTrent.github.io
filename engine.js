@@ -16,7 +16,7 @@ function getSearchQuery()
   //dont let an emply value pass though
   if(query)
   {
-    walmartlabsURLSearchQuery = "https://api.walmartlabs.com/v1/search?query=" + query + "&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
+    walmartlabsURLSearchQuery = "http://api.walmartlabs.com/v1/search?query=" + query + "&format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
     ajaxReqJQUERY(walmartlabsURLSearchQuery);
   }
   else
