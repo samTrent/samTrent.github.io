@@ -8,12 +8,24 @@
     <title>Walmart Homepage</title>
   </head>
   <body>
-    <h1>TEST</h1>
-    <button id="getDataButton" type="button" onclick="ajaxReqJQUERY()" name="button">Get Data!</button>
 
-    <!-- load ajax data here -->
-    <section id="ajaxSection">
-    </section>
+    <img class="logoImage" src="imgs/walmartLogo.png" alt="logo">
+    <br>
+    <input class="searchField" id="searchInput" type="text" name="searchField" value="" required placeholder="Enter an item...">
+    <button class="searchButton" type="button" onclick="getSearchQuery()" name="button">Search Product</button>
+    <br><br>
 
+
+    <input id="backButton" type="hidden" name="button" value="Back" onclick="getSearchQuery()">
+
+    <!-- start table -->
+    <table id="ajaxSection">
+
+      <tr>
+        <td>No Search Results</td>
+      </tr>
+      <!-- append data to table with JQUERY/AJAX -->
+
+    </table>
   </body>
 </html>

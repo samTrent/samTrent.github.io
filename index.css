@@ -1,4 +1,101 @@
 body
 {
-  background-color: blue;
+   background-color: #3779AD; /* walmart blue */
+}
+
+table {
+    font-family: arial, sans-serif;
+    /* border-collapse: collapse; */
+    width: 100%;
+    background-color: lightgray;
+    border: 3px outset black;
+
+}
+
+td, th {
+    border: 4px solid #dedede;
+    text-align: center;
+    padding: 8px;
+    width: 15px;
+}
+
+.itemName
+{
+  font-weight: bold;
+}
+
+.logoImage
+{
+  height: 200px;
+  width: 800px;
+}
+
+.searchButton
+{
+  background-color: #3779AD; /* walmart blue */
+  border: 3px outset white;
+  height: 35px;
+  width: 200px;
+  color: #F2BD50; /* walmart yellow */
+  font-size: 20px;
+}
+
+.searchField
+{
+
+  border: 3px outset white;
+  height: 27.5px;
+  width: 200px;
+  font-size: 20px;
+}
+
+.searchButton:hover
+{
+  background-color: #F2BD50; /* walmart yellow */
+  border: 3px inset white;
+  color: #3779AD; /* walmart blue */
+}
+
+.descriptionText
+{
+  font-size: 14px;
+  padding: 25px;
+}
+
+#imageCell
+{
+  background-color: white;
+}
+
+#imageCell:hover
+{
+  background-color: #EEEEEE; /* grey */
+
+}
+
+#nameCell
+{
+  font-weight: bold;
+}
+
+#nameCell:hover
+{
+
+  color: #3779AD; /* walmart blue */
+
+}
+
+.stockAvailbity
+{
+  background-color: #EEEEEE; /* grey */
+  border-radius: 10px;
+
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.clickableLink
+{
+  cursor: pointer;
+  /* cursor: hand; */
 }
