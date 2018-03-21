@@ -33,7 +33,7 @@ function getSearchQuery()
 *************************************************/
 function getlookUpQuery(itemID)
 {
-  return walmartlabsURLLookUpQuery = "http://api.walmartlabs.com/v1/items/" + itemID + "?format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
+  return walmartlabsURLLookUpQuery = "https://api.walmartlabs.com/v1/items/" + itemID + "?format=json&apiKey=cbdm5w2yfksg5nyxwaxwf92m&callback=?";
 }
 
 /************************************************
@@ -43,7 +43,7 @@ function getlookUpQuery(itemID)
 *************************************************/
 function getRecommendationQuery(itemID)
 {
-  return walmartlabsURLRecommendationQuery = "http://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
+  return walmartlabsURLRecommendationQuery = "https://api.walmartlabs.com/v1/nbp?apiKey=cbdm5w2yfksg5nyxwaxwf92m&itemId=" + itemID + "&callback=?";
 }
 
 /************************************************
